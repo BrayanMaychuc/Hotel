@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\BlancoTuul;
+use App\Models\BlancoVilla;
 use DB;
 
-class BlancosTuulController extends Controller
+class BlancosVillaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class BlancosTuulController extends Controller
     public function index()
     {
         //
-        return $blancos=BlancoTuul::all();
+        return $blancos=BlancoVilla::all();
     }
 
     /**
@@ -28,7 +28,7 @@ class BlancosTuulController extends Controller
     public function store(Request $request)
     {
         //
-        $blancos= new BlancoTuul();
+        $blancos= new BlancoVilla();
 
         $blancos->folio=$request->get('folio');
         $blancos->elaborado_por->get('elaborado_por');
@@ -54,7 +54,7 @@ class BlancosTuulController extends Controller
     public function show($id)
     {
         //
-        return $blancos=BlancoTuul::find($id);
+        return $blancos=BlancoRinconada::find($id);
     }
 
     /**
@@ -67,7 +67,7 @@ class BlancosTuulController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $blancos=BlancoTuul::find($id);
+        $blancos=BlancoVilla::find($id);
 
         $blancos->folio=$request->get('folio');
         $blancos->elaborado_por->get('elaborado_por');
@@ -93,7 +93,7 @@ class BlancosTuulController extends Controller
     public function destroy($id)
     {
         //
-        $blancos=BlancoTuul::find($id);
+        $blancos=BlancoVilla::find($id);
 
         $blancos->delete();
     }

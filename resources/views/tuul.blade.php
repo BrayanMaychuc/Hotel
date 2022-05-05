@@ -11,7 +11,7 @@
     <title>Document</title>
 </head>
 <body>
-<div id="apiTuul">
+<div id="apiTuulInv">
   <div class="container">
     <div class="container-header">
       <h3><b>Inventario de Blancos del TUUL</b></h3>
@@ -134,5 +134,5 @@
 </html>
 @endsection 
 @push('scripts')
-<script type="text/javascript" src="js/apis/apiTuul.js"></script>
+<script type="text/javascript" src="js/apis/apiTuulInv.js"></script>
 @endpush

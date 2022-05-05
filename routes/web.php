@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Controllers\apiTuulController;
+use Illuminate\Http\Controllers\BlancosTuul;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +42,4 @@ Route::get('blancosN', function(){
 
 // SECCION PARA ENRUTAR APIS
 Route::apiResource('apiBlancos', 'apiTuulController');
+Route::apiResource('BlancosTuul', 'BlancosTuulController');
