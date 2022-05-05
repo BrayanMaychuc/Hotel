@@ -11,7 +11,8 @@
     <title>Document</title>
 </head>
 <body>
-<div id="apiTuulInv">
+<div id="apiTuulInv"> <!--INICIO DE VUE -->
+
   <div class="container">
     <div class="container-header">
       <h3><b>Inventario de Blancos del TUUL</b></h3>
@@ -20,19 +21,20 @@
     <div class="input-group mb-3">
       <input type="text" class="form-control" placeholder="Buscar por nombre" aria-describedby="basic-addon2">
       <button class="btn btn-sm" style="background-color: skyblue;" @click="showModal()">Nuevo Inventario</button>
-      <button class="btn btn-sm" style="background-color: azure;">Lista de Inventarios</button>
+      <button class="btn btn-sm" style="background-color: azure;" @click="showListInv()">Lista de Inventarios</button>
       <button class="btn btn-sm" style="background-color: azure;"></button>
     </div>
     
-    
-    
-      <table class="table">
+    <div class="card">
+      <div class="col" v-for="blanco in blancosTuul">
+        <h6 class="col-md-4">Elaborado por: @{{blanco.elaborado}}</h6>
+        <h6 class="col-md-4">Fecha de Elaboracion: @{{blanco.fecha_elaboracion}}</h6>
+        <h6 class="col-md-4">Folio: @{{blanco.folio}}</h6>
+      </div>
+      <div class="card-body-fluid">
+        <table class="table">
           <thead class="thead-dark">
             <tr>
-              <th scope="col">id blanco</th>
-              <th scope="col">folio</th>
-              <th scope="col">elaborado</th>
-              <th scope="col">fecha de elaboracion</th>
               <th scope="col">descripcion</th>
               <th scope="col">marca</th>
               <th scope="col">unidad</th>
@@ -44,23 +46,24 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row"></th>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+            <tr v-for="blanco in blancosTuul">
+              <td>@{{blanco.descripcion}}</td>
+              <td>@{{blanco.marca}}</td>
+              <td>@{{blanco.unidad}}</td>
+              <td>@{{blanco.stock}}</td>
+              <td>@{{blanco.piso}}</td>
+              <td>@{{blanco.surtido}}</td>
+              <td>@{{blanco.total}}</td>
+              <td>@{{blanco.observaciones}}</td>
             </tr>
-          
           </tbody>
         </table>
+      </div>  
+    </div>    
   </div>    
    
   <!-- INICIO DE LA VENTANA MODAL PARA NUEVO INVENTARIO -->
-  <div class="modal fade" id="modalInventario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="modalInventarioTuul" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="card">
@@ -128,8 +131,52 @@
         </div>
       </div>
     </div>
-  </div>      
-</div>    
+  </div>      <!--FIN DE VENTANA MODAL -->
+          <!-- INICIO DE LA VENTANA QUE CONTENDRA LOS INVENTARIOS -->
+    <div class="modal fade" id="modalListInventario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Lista de Inventarios</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="table-responsive">
+              <table class="table caption-top">
+                  <thead>
+                    <tr>
+                      <th scope="col">Folio:</th>
+                      <th scope="col">Fecha de Elaboracion:</th>
+                      <th scope="col">Elaborado por:</th>
+                      <th scope="col">Opciones</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="blanco in blancosTuul">
+                      <th scope="row">@{{blanco.folio}}</th>
+                      <td>@{{blanco.fecha_elaboracion}}</td>
+                      <td>@{{blanco.elaborado}}</td>
+                      <td>
+                        <button class="btn btn-primary"><i class="bi bi-eye-fill">Ver</i></button>
+                      </td>
+                    </tr>
+                    
+                  </tbody>
+                
+              </table>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+          <!-- FIN DE LA VENTANA QUE CONTIENE LOPS INVENTARIOS -->
+
+</div>    <!--FIN DE VUE -->
 </body>
 </html>
 @endsection 

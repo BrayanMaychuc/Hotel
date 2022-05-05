@@ -29,10 +29,10 @@ class BlancosTuulController extends Controller
     {
         //
         $blancos= new BlancoTuul();
-
+        
+        $blancos->id_blancos3->get('id_blanco3');
         $blancos->folio=$request->get('folio');
         $blancos->elaborado_por->get('elaborado_por');
-        $blancos->fecha_elaboracion->get('fecha_elaboracion');
         $blancos->descripcion->get('descripcion');
         $blancos->marca->get('marca');
         $blancos->unidad->get('unidad');
@@ -41,6 +41,8 @@ class BlancosTuulController extends Controller
         $blancos->surtido->get('surtido');
         $blancos->total->get('total');
         $blancos->observaciones->get('observaciones');
+        $blancos->fecha_elaboracion->get('fecha_elaboracion');
+        
 
         $blancos->save();
     }
