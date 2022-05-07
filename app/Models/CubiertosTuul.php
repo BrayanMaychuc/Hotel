@@ -15,17 +15,17 @@ class CubiertosTuul extends Model
 
     //Clave primari numerica y etiquetas de tiempo
     public $incrementing=true;
-    public $timestamps=true;
+    public $timestamps=false;
 
     //Campos de la tabla
     protected $fillable=[
-        'folio',
-        'elaborado_por',
-        'fecha_elaboracion',
+        'id_tuul',
         'descripcion',
-        'exitencia',
+        'existencia',
+        'surtido',
         'total',
-        'de_baja',
-        'observaciones'
+        'status',
+        'observacion',
+        'fecha_elaboracion'
     ];
 }

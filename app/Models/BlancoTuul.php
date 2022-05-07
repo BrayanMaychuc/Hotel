@@ -15,12 +15,10 @@ class BlancoTuul extends Model
  
      //Clave primari numerica y etiquetas de tiempo
      public $incrementing=true;
-     public $timestamps=true;
+     public $timestamps=false;
  
      //Campos de la tabla
      protected $fillable=[
-         'elaborado_por',
-         'fecha_elaboracion',
          'descripcion',
          'marca',
          'unidad',
@@ -29,6 +27,5 @@ class BlancoTuul extends Model
          'surtido',
          'total',
          'observaciones'
- 
      ];
 }

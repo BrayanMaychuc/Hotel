@@ -30,14 +30,13 @@ class CubiertosTuulController extends Controller
         //
         $cubiertos= new CubiertosTuul();
 
-        $cubiertos->folio=$request->get('folio');
-        $cubiertos->elaborado_por->get('elaborado_por');
-        $cubiertos->fecha_elaboracion->get('fecha_elaboracion');
-        $cubiertos->descripcion->get('descripcion');
-        $cubiertos->existencia->get('existencia');
-        $cubiertos->total->get('total');
-        $cubiertos->de_baja->get('de_baja');
-        $cubiertos->observaciones->get('observaciones');
+        $cubiertos->id_tuul=$request->get('id_tuul');
+        $cubiertos->descripcion=$request->get('descripcion');
+        $cubiertos->existencia=$request->get('existencia');
+        $cubiertos->total=$request->get('total');
+        $cubiertos->status=$request->get('status');
+        $cubiertos->observacion=$request->get('observacion');
+        $cubiertos->fecha_elaboracion=$request->get('fecha_elaboracion');
 
         $cubiertos->save();
     }
@@ -66,14 +65,13 @@ class CubiertosTuulController extends Controller
         //
         $cubiertos=CubiertosTuul::find($id);
 
-        $cubiertos->folio=$request->get('folio');
-        $cubiertos->elaborado_por->get('elaborado_por');
-        $cubiertos->fecha_elaboracion->get('fecha_elaboracion');
-        $cubiertos->descripcion->get('descripcion');
-        $cubiertos->existencia->get('existencia');
-        $cubiertos->total->get('total');
-        $cubiertos->de_baja->get('de_baja');
-        $cubiertos->observaciones->get('observaciones');
+        $cubiertos->id_tuul=$request->get('id_tuul');
+        $cubiertos->descripcion=$request->get('descripcion');
+        $cubiertos->existencia=$request->get('existencia');
+        $cubiertos->total=$request->get('total');
+        $cubiertos->status=$request->get('status');
+        $cubiertos->observacion=$request->get('observacion');
+        $cubiertos->fecha_elaboracion=$request->get('fecha_elaboracion');
 
         $cubiertos->update();
     }

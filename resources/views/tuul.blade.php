@@ -26,11 +26,6 @@
     </div>
     
     <div class="card">
-      <div class="col" v-for="blanco in blancosTuul">
-        <h6 class="col-md-4">Elaborado por: @{{blanco.elaborado}}</h6>
-        <h6 class="col-md-4">Fecha de Elaboracion: @{{blanco.fecha_elaboracion}}</h6>
-        <h6 class="col-md-4">Folio: @{{blanco.folio}}</h6>
-      </div>
       <div class="card-body-fluid">
         <table class="table">
           <thead class="thead-dark">
@@ -43,6 +38,7 @@
               <th scope="col">surtido</th>
               <th scope="col">total</th>
               <th scope="col">observaciones</th>
+              <th scope="col">Opciones</th>
             </tr>
           </thead>
           <tbody>
@@ -55,83 +51,104 @@
               <td>@{{blanco.surtido}}</td>
               <td>@{{blanco.total}}</td>
               <td>@{{blanco.observaciones}}</td>
+              <td>
+                <button class="btn btn-secondary" @click="editarProductos()"><i class="bi bi-pencil-square"></i></button>
+                <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
+              </td>
             </tr>
           </tbody>
         </table>
       </div>  
     </div>    
   </div>    
-   
+
   <!-- INICIO DE LA VENTANA MODAL PARA NUEVO INVENTARIO -->
   <div class="modal fade" id="modalInventarioTuul" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="card">
-          <div class="card-body">
-              <div class="card-header" style="border-radius: 5px; background-color: goldenrod;">
-                  <h4>Nuevo Inventario</h4>
-              </div><br>  
-              <div class="input-group mb-3">
-                  <span class="input-group-text" id="basic-addon1"><b>Folio</b></span>
-                  <input type="number" class="col-md-8 form-control" placeholder="Inserte el folio" aria-label="Username" aria-describedby="basic-addon1">
-                  
-
-                  <span class="input-group-text" id="basic-addon1"><b>Elaborado por: </b></span>
-                  <input type="text" class="col-md-4 form-control" placeholder="Introduzca su nombre" aria-label="Username" aria-describedby="basic-addon1">
-                  
-                  
-              </div>
-      
-              <div class="input-group mb-3">
-                  <span class="input-group-text" id="basic-addon1"><b>Fecha de Elaboracion</b></span>
-                  <input type="date" class="col-md-4 form-control" placeholder="Inserte la Fecha" aria-label="Username" aria-describedby="basic-addon1">
-                  
-                  <span class="input-group-text" id="basic-addon1"><b>Descripcion</b></span>
-                  <input type="text" class="col-md-6 form-control" placeholder="Nombre del Producto" aria-label="Username" aria-describedby="basic-addon1">
-                  
-              </div>
-              <div class="input-group mb-3">
-                  <span class="input-group-text" id="basic-addon1"><b>Marca</b></span>
-                  <input type="text" class="col-md-3 form-control" placeholder="Marca" aria-label="Username" aria-describedby="basic-addon1">
-                  
-                  <span class="input-group-text" id="basic-addon1"><b>Unidades</b></span>
-                  <input type="number" class="col-md-3 form-control" placeholder="Inserte el numero de unidades" aria-label="Username" aria-describedby="basic-addon1">
-                  
-                  <span class="input-group-text" id="basic-addon1"><b>Stock</b></span>
-                  <input type="text" class="col-md-2 form-control" placeholder="Stock Disponible" aria-label="Username" aria-describedby="basic-addon1">
-                  
-                  
-              </div>
-      
-              <div class="input-group mb-3">
-                  
-                  <span class="input-group-text" id="basic-addon1"><b>Piso</b></span>
-                  <input type="text" class="col-md-6 form-control" placeholder="Inserte Numero de Piso" aria-label="Username" aria-describedby="basic-addon1">
-      
-                  <span class="input-group-text" id="basic-addon1"><b>Surtido </b></span>
-                  <input type="text" class="col-md-4 form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
-      
-                  <span class="input-group-text" id="basic-addon1"><b>Total</b></span>
-                  <input type="number" class="col-md-4 form-control" placeholder="Introduzca Cantidad" aria-label="Username" aria-describedby="basic-addon1">
-                  
-                  
-              </div>
-      
-              <div class="input-group mb-3">
-                  <span class="input-group-text" id="basic-addon1"><b>Observaciones</b></span>
-                  <input type="text" class="col-md-8 form-control" placeholder="Observaciones" aria-label="Username" aria-describedby="basic-addon1">
-                  
-              </div>
-              
-            </div>
+    
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" v-if="agregando==true">Inventario de Blancos</h5>
+            <h5 class="modal-title" v-if="agregando==false">Editanto Inventario</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" @click="addElements()">Guardar</button>
+          <div class="modal-body">
+            <!-- INICIO DEL BODY -->
+            <div class="card">
+              <div class="card-body">
+                  <div class="card-header" style="border-radius: 5px; background-color: goldenrod;">
+                      <h4>Nuevo Inventario</h4>
+                  </div><br>  
+                  <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1"><b>Folio</b></span>
+                      <input type="number" class="col-md-8 form-control" placeholder="Inserte el folio" v-model="folio" aria-label="Username" aria-describedby="basic-addon1">
+                            
+          
+                      <span class="input-group-text" id="basic-addon1"><b>Elaborado por: </b></span>
+                      <input type="text" class="col-md-4 form-control" placeholder="Introduzca su nombre" v-model="elaborado" aria-label="Username" aria-describedby="basic-addon1">
+                            
+                      <span class="input-group-text" id="basic-addon1"><b>Fecha de Elaboracion</b></span>
+                      <input type="text" class="col-md-4 form-control" placeholder="Inserte la Fecha" v-model="fecha_elaboracion" aria-label="Username" aria-describedby="basic-addon1">
+                      
+                  </div>
+                  <div>
+                      <button class="btn btn-success" @click="saveName()">Guardar Nombre</button>
+                  </div><br>
+                  <div class="input-group mb-3">
+                      
+                      <span class="input-group-text" id="basic-addon1"><b>Descripcion</b></span>
+                      <input type="text" class="col-md-6 form-control" placeholder="Nombre del Producto" v-model="descripcion" aria-label="Username" aria-describedby="basic-addon1">
+                        
+                  </div>
+          
+                  <div class="input-group mb-3">
+            
+                      <span class="input-group-text" id="basic-addon1"><b>Marca</b></span>
+                      <input type="text" class="col-md-3 form-control" placeholder="Marca" v-model="marca" aria-label="Username" aria-describedby="basic-addon1">
+                            
+                      <span class="input-group-text" id="basic-addon1"><b>Unidades</b></span>
+                      <input type="text" class="col-md-3 form-control" placeholder="Inserte el numero de unidades" v-model="unidad"aria-label="Username" aria-describedby="basic-addon1">
+                
+                      <span class="input-group-text" id="basic-addon1"><b>Stock</b></span>
+                      <input type="text" class="col-md-2 form-control" placeholder="Stock Disponible" v-model="stock" aria-label="Username" aria-describedby="basic-addon1">
+                       
+                  </div>
+          
+                  <div class="input-group mb-3">
+                      
+                      <span class="input-group-text" id="basic-addon1"><b>Piso</b></span>
+                      <input type="text" class="col-md-6 form-control" placeholder="Inserte Numero de Piso" v-model="piso" aria-label="Username" aria-describedby="basic-addon1">
+          
+                      <span class="input-group-text" id="basic-addon1"><b>Surtido </b></span>
+                      <input type="number" class="col-md-4 form-control" placeholder="" v-model="surtido" aria-label="Username" aria-describedby="basic-addon1">
+          
+                      <span class="input-group-text" id="basic-addon1"><b>Total</b></span>
+                      <input type="number" class="col-md-4 form-control" placeholder="Introduzca Cantidad" v-model="total" aria-label="Username" aria-describedby="basic-addon1">
+                      
+                      
+                  </div>
+          
+                  <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1"><b>Observaciones</b></span>
+                      <input type="text" class="col-md-8 form-control" placeholder="Observaciones" v-model="observaciones" aria-label="Username" aria-describedby="basic-addon1">
+                      
+                  </div>
+                  
+              </div>
+          </div>
+            <!-- FIN DE BODY -->
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" @click="newInventary()">Save changes</button>
+            <button type="button" class="btn btn-warning" @click="updateData()"></button>
+          </div>
         </div>
       </div>
-    </div>
-  </div>      <!--FIN DE VENTANA MODAL -->
+    
+  </div>
+  <!--FIN DE VENTANA MODAL -->
           <!-- INICIO DE LA VENTANA QUE CONTENDRA LOS INVENTARIOS -->
     <div class="modal fade" id="modalListInventario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
@@ -153,10 +170,10 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="blanco in blancosTuul">
-                      <th scope="row">@{{blanco.folio}}</th>
-                      <td>@{{blanco.fecha_elaboracion}}</td>
-                      <td>@{{blanco.elaborado}}</td>
+                    <tr v-for="Dato in DatosEncargado">
+                      <th scope="row">@{{Dato.folio}}</th>
+                      <td>@{{Dato.fecha_elaboracion}}</td>
+                      <td>@{{Dato.elaborado}}</td>
                       <td>
                         <button class="btn btn-primary"><i class="bi bi-eye-fill">Ver</i></button>
                       </td>

@@ -7,30 +7,38 @@
             <h4>Nuevo Inventario</h4>
         </div><br>  
         <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1"><b>Folio</b></span>
+            <input type="number" class="col-md-8 form-control" placeholder="Inserte el folio" aria-label="Username" aria-describedby="basic-addon1">
+                  
+
             <span class="input-group-text" id="basic-addon1"><b>Elaborado por: </b></span>
             <input type="text" class="col-md-4 form-control" placeholder="Introduzca su nombre" aria-label="Username" aria-describedby="basic-addon1">
-            <div class="col-sm-2"></div>
+                  
             <span class="input-group-text" id="basic-addon1"><b>Fecha de Elaboracion</b></span>
-            <input type="text" class="col-md-4 form-control" placeholder="Inserte la Fecha" aria-label="Username" aria-describedby="basic-addon1">
+            <input type="date" class="col-md-4 form-control" placeholder="Inserte la Fecha" aria-label="Username" aria-describedby="basic-addon1">
+            
         </div>
-
+        <div>
+            <button class="btn btn-success" @click="saveName()">Guardar Nombre</button>
+        </div><br>
         <div class="input-group mb-3">
-
+            
             <span class="input-group-text" id="basic-addon1"><b>Descripcion</b></span>
             <input type="text" class="col-md-6 form-control" placeholder="Nombre del Producto" aria-label="Username" aria-describedby="basic-addon1">
-            
+              
         </div>
+
         <div class="input-group mb-3">
+  
             <span class="input-group-text" id="basic-addon1"><b>Marca</b></span>
             <input type="text" class="col-md-3 form-control" placeholder="Marca" aria-label="Username" aria-describedby="basic-addon1">
-            
+                  
             <span class="input-group-text" id="basic-addon1"><b>Unidades</b></span>
             <input type="number" class="col-md-3 form-control" placeholder="Inserte el numero de unidades" aria-label="Username" aria-describedby="basic-addon1">
-            
+      
             <span class="input-group-text" id="basic-addon1"><b>Stock</b></span>
             <input type="text" class="col-md-2 form-control" placeholder="Stock Disponible" aria-label="Username" aria-describedby="basic-addon1">
-            
-            
+             
         </div>
 
         <div class="input-group mb-3">
