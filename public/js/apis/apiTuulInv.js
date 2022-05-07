@@ -2,6 +2,8 @@ function init(){
 
     var apiBlancosTuul = 'http://localhost/Hotel/public/BlancosTuul';
     var DatosEncargado ='http://localhost/Hotel/public/Datos';
+    var inventariosTuul ='http://localhost/Hotel/public/inventarios';
+
     new Vue({
         http: {
             headers:{
@@ -25,10 +27,15 @@ function init(){
             folio:'',
             elaborado:'',
             fecha_elaboracion:'',
-            agregando:true,
+            inventarios:[],
+            id_inventario:'',
+            folio:'',
+            
         },
         created:function(){
             this.getInv();
+            this.getDatos();
+            this.getInventarios();
         },
         methods:{
             getInv:function(){
@@ -39,6 +46,12 @@ function init(){
             getDatos:function(){
                 this.$http.get(DatosEncargado).then(function(j){
                    this.DatosEncargado=j.data;
+                })
+            },
+            getInventarios:function(){
+                this.$http.get(inventariosTuul).then(function(j){
+                    this.inventariosTuul=j.data;
+                    
                 })
             },
             showListInv:function(){
@@ -59,7 +72,7 @@ function init(){
                     surtido:this.surtido,
                     total:this.total,
                     observaciones:this.observaciones
-                    }    
+                }    
                     this.$http.post(apiBlancosTuul, inventario).then(function(j){
                         this.getInv();
                         this.descripcion="",

@@ -13,7 +13,7 @@ function init(){
             id_insumo:'',
             nombre:'',
             unidad:'',
-            cantidad:''
+            cantidad:'', 
         },
         created:function(){
             this.getInsumos();
@@ -40,6 +40,24 @@ function init(){
                     cantidad=""
                 });
                 $('#modalInsumos').modal('hide');
+            },
+            editInsumos:function(id){
+                this.id_insumo=id;
+                this.$http.get(insumosT + '/' + id).then(function(j){
+                    this.nombre=j.data.nombre;
+                    this.unidad=j.data.unidad;
+                    this.cantidad=j.data.cantidad;
+                    console.log(j);
+                });
+                $('#modalInsumos').modal('show');
+            },
+            deleteInsumos:function(id){
+                this.$http.delete(insumosT + '/' + id).then(function(j){
+                    this.getInsumos();
+
+                }).catch(function(j){
+                    console.log(j);
+                })
             }
         }
     });

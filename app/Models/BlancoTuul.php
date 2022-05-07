@@ -19,6 +19,7 @@ class BlancoTuul extends Model
  
      //Campos de la tabla
      protected $fillable=[
+         'id_blancos3',
          'descripcion',
          'marca',
          'unidad',

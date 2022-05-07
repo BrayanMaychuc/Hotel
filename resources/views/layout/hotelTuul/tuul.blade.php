@@ -16,6 +16,7 @@
   <div class="container">
     <div class="container-header">
       <h3><b>Inventario de Blancos del TUUL</b></h3>
+      <p>@{{inventarios}}</p>
       
     </div> <br><br>
     <div class="input-group mb-3">
@@ -58,6 +59,10 @@
             </tr>
           </tbody>
         </table>
+        <div>
+          <button class="btn" style="background-color: aquamarine; margin-left: 15px;">Guardar</button>
+        </div>
+        <br>
       </div>  
     </div>    
   </div>    
@@ -68,8 +73,8 @@
       <div class="modal-dialog modal-xl">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" v-if="agregando==true">Inventario de Blancos</h5>
-            <h5 class="modal-title" v-if="agregando==false">Editanto Inventario</h5>
+            <h5 class="modal-title" >Inventario de Blancos</h5>
+            <!-- <h5 class="modal-title" >Editanto Inventario</h5> -->
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">

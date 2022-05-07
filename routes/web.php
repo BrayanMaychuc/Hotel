@@ -5,6 +5,7 @@ use Illuminate\Http\Controllers\apiTuulController;
 use Illuminate\Http\Controllers\BlancosTuul;
 use Illuminate\Http\Controllers\DatosEncargadoController;
 use App\Http\Controllers\InsumosTuulController;
+use App\Http\Controllers\InventariosTuulController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +24,7 @@ Route::get('/', function () {
 Route::get('index', function(){
     return view('index');
 });
-Route::get('tuul', function(){
-    return view('tuul');
-});
+
 
 Route::get('rinconada', function(){
     return view('rinconada');
@@ -44,14 +43,18 @@ Route::get('blancosN', function(){
 Route::get('inventarioBlancosT', function(){
     return view('formularios.tablaInventariotuul');
 });
-Route::get('inventarioCubiertosT', function(){
-    return view('formularios.tabla_cubiertosTuul');
-});
 
 
 // SECCION DEL HOTEL TUUL
 Route::get('insumosT', function(){
-    return view('insumosTuul');
+    return view('layout.hotelTuul.insumosTuul');
+});
+Route::get('tuul', function(){
+    return view('layout.hotelTuul.tuul');
+});
+
+Route::get('inventarioCubiertosT', function(){
+    return view('formularios.tabla_cubiertosTuul');
 });
 
 // SECCION PARA ENRUTAR APIS
@@ -62,3 +65,4 @@ Route::apiResource('BlancosTuul', 'BlancosTuulController');
 Route::apiResource('Datos', 'DatosEncargadoController');
 Route::apiResource('cubiertosTuul', 'CubiertosTuulController');
 Route::apiResource('insumos', 'InsumosTuulController');
+Route::apiResource('inventarios', 'InventariosTuulController');

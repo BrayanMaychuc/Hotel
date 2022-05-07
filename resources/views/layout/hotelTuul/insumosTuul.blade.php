@@ -20,6 +20,7 @@
                     <th>nombre</th>
                     <th>unidad</th>
                     <th>cantidad</th>
+                    <th>Opciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,6 +29,10 @@
                     <td>@{{insumo.nombre}}</td>
                     <td>@{{insumo.unidad}}</td>
                     <td>@{{insumo.cantidad}}</td>
+                    <td>
+                        <button class="btn btn-secondary" @click="editInsumos()"><i class="bi bi-pencil-square"></i></button>
+                        <button class="btn btn-danger" @click="deleteInsumos()"><i class="bi bi-trash-fill"></i></button>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -37,7 +42,8 @@
                 <div class="modal-dialog modal-md">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Registrando Insumos</h5>
+                            <h5 class="modal-title" >Registrando Insumos</h5>
+                            <!-- <h5 class="modal-title" v-if="editando==false">Editando Insumos</h5> -->
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">

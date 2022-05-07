@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\InsumosTuul;
+use App\Models\InventariosTuul;
 
-class InsumosTuulController extends Controller
+class InventariosTuulController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class InsumosTuulController extends Controller
      */
     public function index()
     {
-        return $insumos = InsumosTuul::all();
+        return $inventario = InventariosTuul::all();
     }
 
     /**
@@ -25,14 +25,7 @@ class InsumosTuulController extends Controller
      */
     public function store(Request $request)
     {
-        $insumos= new InsumosTuul;
-
-        $insumos->id_insumo=$request->get('id_insumo');
-        $insumos->nombre=$request->get('nombre');
-        $insumos->unidad=$request->get('cantidad');
-        $insumos->cantidad=$request->get('cantidad');
-
-        $insumos->save();
+        //
     }
 
     /**
@@ -43,7 +36,7 @@ class InsumosTuulController extends Controller
      */
     public function show($id)
     {
-        return InsumosTuul::find($id);
+        //
     }
 
     /**
@@ -66,7 +59,6 @@ class InsumosTuulController extends Controller
      */
     public function destroy($id)
     {
-        $insumos = producto::find($id);
-        $insumos->delete($id);
+        //
     }
 }
