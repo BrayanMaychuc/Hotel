@@ -30,36 +30,19 @@ Route::apiResource('diario','DiarioController');
 
 Route::apiResource('blanco', 'blancosController');
 
+Route::apiResource('cubierto', 'cubiertosController');
 
-Route::get('rinconada', function(){
-    return view('rinconada');
-});
-Route::get('villa', function(){
-    return view('villa');
-});
-Route::get('Form', function(){
-    return view('formularios.form_InventarioN');
-});
-// RUTAS PARA TABLAS
-Route::get('blancosN', function(){
-    return view('blancosN');
-});
+Route::apiResource('blancoT', 'blancosTuulController');
+        // FIN DE SECCION DE APIS TUUL
 
-        // Route::get('inventarioBlancosT', function(){
-            //     return view('formularios.tablaInventariotuul');
-            // });
 
 
 // SECCION DEL HOTEL TUUL
 Route::view('nuevo', 'tablas_nuevas.inventario_diario' );
 Route::view('blancos', 'tablas_nuevas.blanco_nuevo');
+Route::view('cubiertos','tablas_nuevas.inventario_cubiertos');
+Route::view('blancosTuul','tablas_nuevas.inventario_blancos');
 
-Route::get('insumosT', function(){
-    return view('hotelTuul.insumosTuul');
-});
-Route::get('tuul', function(){
-    return view('hotelTuul.tuul');
-});
 
         // Route::get('inventarioCubiertosT', function(){
         //     return view('formularios.tabla_cubiertosTuul');
