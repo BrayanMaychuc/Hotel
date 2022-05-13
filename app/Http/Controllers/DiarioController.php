@@ -60,9 +60,9 @@ class DiarioController extends Controller
 
         $diarios->folio=$request->get('folio');
         $diarios->lugar=$request->get('lugar');
-        $diarios->producto =$request->get('producto');
-        $diarios->unidad =$request->get('unidad');
-        $diarios->cantidad =$request->get('cantidad');
+        $diarios->producto=$request->get('producto');
+        $diarios->unidad=$request->get('unidad');
+        $diarios->cantidad=$request->get('cantidad');
         
         $diarios->update();
     }
