@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Datos_Encargado;
+use App\Models\InventarioDiario;
 
-class DatosEncargadoController extends Controller
+class DiarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class DatosEncargadoController extends Controller
      */
     public function index()
     {
-        return $datos=Datos_Encargado::all();
+        return $diarios=InventarioDiario::all();
     }
 
     /**
@@ -25,13 +25,15 @@ class DatosEncargadoController extends Controller
      */
     public function store(Request $request)
     {
-        $datos = new Datos_Encargado;
-        $datos->folio=$request->get('folio');
-        $datos->elaborado=$request->get('elaborado');
-        $datos->fecha_elaboracion=$request->get('fecha_elaboracion');
+        $diarios = new InventarioDiario();
 
-        $datos->save();
+        $diarios->folio=$request->get('folio');
+        $diarios->lugar=$request->get('lugar');
+        $diarios->producto = $request->get('producto');
+        $diarios->unidad = $request->get('unidad');
+        $diarios->cantidad = $request->get('cantidad');
         
+        $diarios->update();
     }
 
     /**
@@ -42,7 +44,7 @@ class DatosEncargadoController extends Controller
      */
     public function show($id)
     {
-        //
+        $diarios=InventarioDiario::find($id);
     }
 
     /**
@@ -54,7 +56,15 @@ class DatosEncargadoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $diarios=InventarioDiario::find($id);
+
+        $diarios->folio=$request->get('folio');
+        $diarios->lugar=$request->get('lugar');
+        $diarios->producto =$request->get('producto');
+        $diarios->unidad =$request->get('unidad');
+        $diarios->cantidad =$request->get('cantidad');
+        
+        $diarios->update();
     }
 
     /**

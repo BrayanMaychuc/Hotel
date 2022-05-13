@@ -10,6 +10,7 @@ function init(){
                 'X-CSRF-TOKEN': document.querySelector('#token').getAttribute('value')
             }
         },
+
         el:'#apiTuulInv',
 
         data:{
@@ -30,6 +31,7 @@ function init(){
             inventarios:[],
             id_inventario:'',
             folio:'',
+            find:''
             
         },
         created:function(){
@@ -60,6 +62,7 @@ function init(){
             showModal:function(){
                 $('#modalInventarioTuul').modal('show');
             },
+            
             newInventary:function(){
                 
                 var inventario={
@@ -105,7 +108,7 @@ function init(){
             },
 
             editarProductos:function(id){
-                this.agregando=false;
+                
                 this.id_blancos3=id; 
                 this.$http.get(apiBlancosTuul + '/' + id).then(function(j){
                     this.getInv();
@@ -139,6 +142,14 @@ function init(){
                 });
                 $('#modalInventarioTuul').modal('show');
             }
+            
+        },  // FIN DE METHODS
+        computed:{
+            buscarInventario(){
+                return this.DatosEncargado.filter((datos)=>{
+                    return datos.elaborado.toLowerCase().match(this.find.toLowerCase().trim())
+                });
+            },
         }
     })
 }window.onload=init;

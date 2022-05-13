@@ -21,6 +21,8 @@ function init(){
             total:'',
             fecha_entrada:'',
 
+            find:'',
+
         },
 
         created:function(){
@@ -56,6 +58,14 @@ function init(){
 
             showModal:function(){
                 $('#modalInventario').modal('show');
+            },
+        }, 
+        // FIN DEL METHODS
+        computed:{
+            findInv:function(){
+                return this.blancos.filter((add)=>{
+                    return add.fecha_entrada.toLowerCase().match(this.find.toLowerCase().trim());
+                });
             },
         }
         

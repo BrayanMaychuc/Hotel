@@ -5,19 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class InsumosTuul extends Model{
-    protected $table='insumos_tuul';
-    protected $primaryKey='id_insumo';
+class InventarioDiario extends Model
+{
+    use HasFactory;
+    protected $table='inventario_diario';
+
+    protected $primaryKey='folio';
 
     public $incrementing=true;
 
     public $timestamps=false;
 
     protected $fillable=[
-        'id_insumo',
-        'nombre',
+        'folio',
+        'lugar',
+        'producto',
         'unidad',
         'cantidad'
     ];
-    
 }

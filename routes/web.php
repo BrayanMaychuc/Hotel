@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Controllers\apiTuulController;
-use Illuminate\Http\Controllers\BlancosTuul;
-use Illuminate\Http\Controllers\DatosEncargadoController;
-use App\Http\Controllers\InsumosTuulController;
-use App\Http\Controllers\InventariosTuulController;
+use Illuminate\Http\Controllers\DiarioController;
+// use Illuminate\Http\Controllers\BlancosTuul;
+// use Illuminate\Http\Controllers\DatosEncargadoController;
+// use App\Http\Controllers\InsumosTuulController;
+// use App\Http\Controllers\InventariosTuulController;
+// use App\Http\Controllers\pdfInventarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,8 @@ Route::get('/', function () {
 Route::get('index', function(){
     return view('index');
 });
-
+        // APIS TUUL
+Route::apiResource('diario','DiarioController');
 
 Route::get('rinconada', function(){
     return view('rinconada');
@@ -40,29 +42,31 @@ Route::get('blancosN', function(){
     return view('blancosN');
 });
 
-Route::get('inventarioBlancosT', function(){
-    return view('formularios.tablaInventariotuul');
-});
+        // Route::get('inventarioBlancosT', function(){
+            //     return view('formularios.tablaInventariotuul');
+            // });
 
 
 // SECCION DEL HOTEL TUUL
+Route::view('nuevo', 'tablas_nuevas.inventario_diario' );
+
 Route::get('insumosT', function(){
-    return view('layout.hotelTuul.insumosTuul');
+    return view('hotelTuul.insumosTuul');
 });
 Route::get('tuul', function(){
-    return view('layout.hotelTuul.tuul');
+    return view('hotelTuul.tuul');
 });
 
-Route::get('inventarioCubiertosT', function(){
-    return view('formularios.tabla_cubiertosTuul');
-});
+        // Route::get('inventarioCubiertosT', function(){
+        //     return view('formularios.tabla_cubiertosTuul');
+        // });
+        // Route::view('tablaBlancos', 'formularios.tablaBlancosN');
 
 // SECCION PARA ENRUTAR APIS
 
                 // HOTEL TUUL
-Route::apiResource('apiBlancos', 'apiTuulController');
-Route::apiResource('BlancosTuul', 'BlancosTuulController');
-Route::apiResource('Datos', 'DatosEncargadoController');
-Route::apiResource('cubiertosTuul', 'CubiertosTuulController');
-Route::apiResource('insumos', 'InsumosTuulController');
-Route::apiResource('inventarios', 'InventariosTuulController');
+
+
+
+            // RUTAS DE FPDF
+Route::get('inventario', 'pdfInventarioController@inventarios');

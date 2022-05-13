@@ -16,12 +16,11 @@
   <div class="container">
     <div class="container-header">
       <h3><b>Inventario de Blancos del TUUL</b></h3>
-      <p>@{{inventarios}}</p>
       
     </div> <br><br>
     <div class="input-group mb-3">
       <input type="text" class="form-control" placeholder="Buscar por nombre" aria-describedby="basic-addon2">
-      <button class="btn btn-sm" style="background-color: skyblue;" @click="showModal()">Nuevo Inventario</button>
+      <button class="btn btn-sm" style="background-color: skyblue;" @click="showModal()">Añadir Producto</button>
       <button class="btn btn-sm" style="background-color: azure;" @click="showListInv()">Lista de Inventarios</button>
       <button class="btn btn-sm" style="background-color: azure;"></button>
     </div>
@@ -43,26 +42,18 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="blanco in blancosTuul">
-              <td>@{{blanco.descripcion}}</td>
-              <td>@{{blanco.marca}}</td>
-              <td>@{{blanco.unidad}}</td>
-              <td>@{{blanco.stock}}</td>
-              <td>@{{blanco.piso}}</td>
-              <td>@{{blanco.surtido}}</td>
-              <td>@{{blanco.total}}</td>
-              <td>@{{blanco.observaciones}}</td>
-              <td>
-                <button class="btn btn-secondary" @click="editarProductos()"><i class="bi bi-pencil-square"></i></button>
-                <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
-              </td>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
             </tr>
           </tbody>
         </table>
-        <div>
-          <button class="btn" style="background-color: aquamarine; margin-left: 15px;">Guardar</button>
-        </div>
-        <br>
       </div>  
     </div>    
   </div>    
@@ -180,7 +171,8 @@
                       <td>@{{Dato.fecha_elaboracion}}</td>
                       <td>@{{Dato.elaborado}}</td>
                       <td>
-                        <button class="btn btn-primary"><i class="bi bi-eye-fill">Ver</i></button>
+                        
+                        <button class="btn btn-secondary"><i class="bi bi-eye-fill"><a href="http://localhost/Hotel/public/inventarioBlancosT" style="color: white;"> Ver</a></i></button>
                       </td>
                     </tr>
                     
@@ -198,6 +190,45 @@
     </div>
           <!-- FIN DE LA VENTANA QUE CONTIENE LOPS INVENTARIOS -->
 
+          <!-- INICIO DE VENTANA MODAL CON TABLA DE INVENTARIOS -->
+        <div class="modal fade" id="modalBlancosT" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+            <table class="table table-striped">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">descripcion</th>
+                  <th scope="col">marca</th>
+                  <th scope="col">unidad</th>
+                  <th scope="col">stock</th>            
+                  <th scope="col">piso</th>
+                  <th scope="col">surtido</th>
+                  <th scope="col">total</th>
+                  <th scope="col">observaciones</th>
+                  <th scope="col">Opciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="blanco in blancosTuul">
+                  <td>@{{blanco.descripcion}}</td>
+                  <td>@{{blanco.marca}}</td>
+                  <td>@{{blanco.unidad}}</td>
+                  <td>@{{blanco.stock}}</td>
+                  <td>@{{blanco.piso}}</td>
+                  <td>@{{blanco.surtido}}</td>
+                  <td>@{{blanco.total}}</td>
+                  <td>@{{blanco.observaciones}}</td>
+                  <td>
+                    <button class="btn btn-secondary" @click="editarProductos()"><i class="bi bi-pencil-square"></i></button>
+                    <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            </div>
+          </div>
+        </div>
 </div>    <!--FIN DE VUE -->
 </body>
 </html>
