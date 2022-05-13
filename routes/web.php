@@ -28,6 +28,9 @@ Route::get('index', function(){
         // APIS TUUL
 Route::apiResource('diario','DiarioController');
 
+Route::apiResource('blanco', 'blancosController');
+
+
 Route::get('rinconada', function(){
     return view('rinconada');
 });
@@ -49,6 +52,7 @@ Route::get('blancosN', function(){
 
 // SECCION DEL HOTEL TUUL
 Route::view('nuevo', 'tablas_nuevas.inventario_diario' );
+Route::view('blancos', 'tablas_nuevas.blanco_nuevo');
 
 Route::get('insumosT', function(){
     return view('hotelTuul.insumosTuul');
