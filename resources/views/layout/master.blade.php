@@ -303,6 +303,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- AdminLTE App -->
 <script src="js/adminlte.min.js"></script>
     <!-- sweetalert -->
-<!-- <script src="js/sweetalert2.all.min.js"></script> -->
+<script src="js/sweetalert2.all.min.js"></script>
 </body>
 </html>

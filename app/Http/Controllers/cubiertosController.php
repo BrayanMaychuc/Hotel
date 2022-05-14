@@ -25,7 +25,13 @@ class cubiertosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cubiertos = new cubiertosTuul();
+        $cubiertos->id_cubierto=$request->get('id_cubierto');
+        $cubiertos->nombre=$request->get('nombre');
+        $cubiertos->existencia=$request->get('existencia');
+        $cubiertos->total=$request->get('total');
+        $cubiertos->observacion=$request->get('observacion');
+        $cubiertos->save();     
     }
 
     /**
@@ -36,7 +42,7 @@ class cubiertosController extends Controller
      */
     public function show($id)
     {
-        //
+        return cubiertosTuul::find();
     }
 
     /**
@@ -48,7 +54,14 @@ class cubiertosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cubiertos = cubiertosTuul::find($id);
+
+        $cubiertos->id_cubierto=$request->get('id_cubierto');
+        $cubiertos->nombre=$request->get('nombre');
+        $cubiertos->existencia=$request->get('existencia');
+        $cubiertos->total=$request->get('total');
+        $cubiertos->observacion=$request->get('observacion');
+        $cubiertos->update(); 
     }
 
     /**
@@ -59,6 +72,7 @@ class cubiertosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cubiertos = cubiertosTuul::find($id);
+        $cubiertos->delete($id);
     }
 }

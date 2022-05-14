@@ -33,7 +33,7 @@ class DiarioController extends Controller
         $diarios->unidad = $request->get('unidad');
         $diarios->cantidad = $request->get('cantidad');
         
-        $diarios->update();
+        $diarios->save();
     }
 
     /**
@@ -44,7 +44,7 @@ class DiarioController extends Controller
      */
     public function show($id)
     {
-        $diarios=InventarioDiario::find($id);
+        return InventarioDiario::find($id);
     }
 
     /**
@@ -75,6 +75,7 @@ class DiarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $diarios = InventarioDiario::find($id);
+        $diarios->delete($id);
     }
 }

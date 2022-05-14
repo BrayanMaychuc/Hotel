@@ -6,7 +6,11 @@
         <div class="container">
             <div class="container-header">
                 <h4>Lista Inventario Diario</h4>
+            </div>
+            <div>
+              <button class="btn btn-secondary" @click="mostrarModal()">prueba</button>
             </div> <br><br>
+  
             <div class="card-deck">
                 <table class=" table table-responsive">
                     <thead class="thead-dark">
@@ -27,7 +31,8 @@
                             <td>@{{diario.unidad}}</td>
                             <td>@{{diario.cantidad}}</td>
                             <td>
-                                <button class="btn" style="border-color: black; border-radius: 5px; background-color: aqua;" @click="editarLista()">Editar</button>
+                                <button class="btn" style="border-color: black; border-radius: 5px; background-color: rgb(96, 225, 96)" @click="editarLista(diario.folio)">Editar</button>
+                                <button class="btn" style="border-color: black; border-radius: 5px; background-color: rgb(212, 54, 54);" @click="deleteProduct(diario.folio)">Eliminar</button>
                             </td>
                         </tr>
                     </tbody>
@@ -39,27 +44,45 @@
 
                 <!--INICIO DE VENTANA PARA EDITAR  -->
 
-                <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                          <input type="text" placeholder="id" v-model="folio">
-                          <input type="text" placeholder="lugar" v-model="lugar">
-                          <input type="text" placeholder="producto" v-model="producto">
-                          <input type="text" placeholder="unidad" v-model="unidad">
-                          <input type="text" placeholder="cantidad" v-model="cantidad">
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+        <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" v-if="agregando==true">Modal guardar</h5>
+                <h5 class="modal-title" id="exampleModalLabel" v-if="agregando==false">Modal</h5>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control" placeholder="Folio" aria-label="Recipient's username" v-model="folio" aria-describedby="basic-addon2">
+                  <span class="input-group-text" id="basic-addon2">Folio</span>
+                </div>
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control" placeholder="Esriba el nombre del hotel" aria-label="Recipient's username" aria-describedby="basic-addon2" v-model="lugar">
+                  <span class="input-group-text" id="basic-addon2">Lugar</span>
+                </div>
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control" placeholder="Nombre del Producto" v-model="producto" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                  <span class="input-group-text" id="basic-addon2">Producto</span>
+                </div>
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control" placeholder="Unidad de Medida" v-model="unidad" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                  <span class="input-group-text" id="basic-addon2">Unidad</span>
+                  
+                  <input type="number" class="form-control" placeholder="Inserte Cantidad" v-model="cantidad" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                  <span class="input-group-text" id="basic-addon2">Cantidad</span>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" v-if="agregando==true" @click="guardarLista()">Guardar</button>
+                <button type="button" class="btn btn-primary" v-if="agregando==false" @click="actualizarDatos()">Actualizar</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
                 <!-- FIN DE VENTANA MODAL -->
     </div>
