@@ -26,7 +26,19 @@ class blancosTuulController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $inventarios= new inventarioBlancosTuul();
+
+        $inventarios->id_blanco=$request->get('id_blanco');        
+        $inventarios->descripcion=$request->get('descripcion');        
+        $inventarios->marca=$request->get('marca');
+        $inventarios->unidad=$request->get('unidad');
+        $inventarios->stock=$request->get('stock');
+        $inventarios->piso=$request->get('piso');
+        $inventarios->surtido=$request->get('surtido');
+        $inventarios->total=$request->get('total');
+        $inventarios->observaciones=$request->get('observaciones');
+
+        $inventarios->save();
     }
 
     /**
@@ -37,7 +49,7 @@ class blancosTuulController extends Controller
      */
     public function show($id)
     {
-        //
+        return $inventarios = inventarioBlancosTuul::find($id);
     }
 
     /**
@@ -49,7 +61,19 @@ class blancosTuulController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $inventarios = inventarioBlancosTuul::find($id);
+
+        $inventarios->id_blanco=$request->get('id_blanco');        
+        $inventarios->descripcion=$request->get('descripcion');        
+        $inventarios->marca=$request->get('marca');
+        $inventarios->unidad=$request->get('unidad');
+        $inventarios->stock=$request->get('stock');
+        $inventarios->piso=$request->get('piso');
+        $inventarios->surtido=$request->get('surtido');
+        $inventarios->total=$request->get('total');
+        $inventarios->observaciones=$request->get('observaciones');
+
+        $inventarios->update();
     }
 
     /**
@@ -60,6 +84,7 @@ class blancosTuulController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $inventarios=inventarioBlancosTuul::find($id);
+        $inventarios->delete($id);
     }
 }

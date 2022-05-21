@@ -6,9 +6,9 @@
         <div class="container">
             <div class="container-header">
                 <h4>Lista Inventario Diario</h4>
-            </div>
+            </div><br>
             <div>
-              <button class="btn btn-secondary" @click="mostrarModal()">prueba</button>
+              <button class="btn btn-primary" @click="mostrarModal()"><i class="bi bi-plus-square-fill"></i></button>
             </div> <br><br>
   
             <div class="card-deck">
@@ -31,8 +31,8 @@
                             <td>@{{diario.unidad}}</td>
                             <td>@{{diario.cantidad}}</td>
                             <td>
-                                <button class="btn" style="border-color: black; border-radius: 5px; background-color: rgb(96, 225, 96)" @click="editarLista(diario.folio)">Editar</button>
-                                <button class="btn" style="border-color: black; border-radius: 5px; background-color: rgb(212, 54, 54);" @click="deleteProduct(diario.folio)">Eliminar</button>
+                                <button class="btn btn-warning" style="border-color: black; border-radius: 5px;" @click="editarLista(diario.folio)"><i class="bi bi-pencil-square"></i></button>
+                                <button class="btn btn-danger" style="border-color: black; border-radius: 5px" @click="deleteProduct(diario.folio)"><i class="bi bi-file-earmark-x-fill"></i></button>
                             </td>
                         </tr>
                     </tbody>

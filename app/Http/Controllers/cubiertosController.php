@@ -42,7 +42,7 @@ class cubiertosController extends Controller
      */
     public function show($id)
     {
-        return cubiertosTuul::find();
+        return cubiertosTuul::find($id);
     }
 
     /**
@@ -61,6 +61,7 @@ class cubiertosController extends Controller
         $cubiertos->existencia=$request->get('existencia');
         $cubiertos->total=$request->get('total');
         $cubiertos->observacion=$request->get('observacion');
+
         $cubiertos->update(); 
     }
 
@@ -73,6 +74,6 @@ class cubiertosController extends Controller
     public function destroy($id)
     {
         $cubiertos = cubiertosTuul::find($id);
-        $cubiertos->delete($id);
+        $cubiertos ->delete($id);
     }
 }

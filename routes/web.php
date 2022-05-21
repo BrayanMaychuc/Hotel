@@ -38,10 +38,11 @@ Route::apiResource('blancoT', 'blancosTuulController');
 
 
 // SECCION DEL HOTEL TUUL
-Route::view('nuevo', 'tablas_nuevas.inventario_diario' );
-Route::view('blancos', 'tablas_nuevas.blanco_nuevo');
+Route::view('diariosT', 'tablas_nuevas.inventario_diario' );
+Route::view('blancosN', 'tablas_nuevas.blanco_nuevo');
 Route::view('cubiertos','tablas_nuevas.inventario_cubiertos');
-Route::view('blancosTuul','tablas_nuevas.inventario_blancos');
+Route::view('blancos','tablas_nuevas.inventario_blancos');
+Route::view('salida', 'salidas');
 
 
         // Route::get('inventarioCubiertosT', function(){
