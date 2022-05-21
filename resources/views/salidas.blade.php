@@ -10,7 +10,7 @@
             <table class="table table-bordered" >
                 <thead style="background-color: lightblue;">
                     <tr>
-                        <th></th>
+                        <th>ID</th>
                         <th>Descripcion</th>
                         <th>Cantidad</th>
                         <th>Autorizo</th>

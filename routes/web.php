@@ -33,6 +33,11 @@ Route::apiResource('blanco', 'blancosController');
 Route::apiResource('cubierto', 'cubiertosController');
 
 Route::apiResource('blancoT', 'blancosTuulController');
+
+Route::apiResource('encargado', 'encargadoController');
+
+Route::apiResource('sali', 'salidasController');
+
         // FIN DE SECCION DE APIS TUUL
 
 
