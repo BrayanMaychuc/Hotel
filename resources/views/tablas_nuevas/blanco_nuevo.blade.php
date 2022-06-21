@@ -31,7 +31,7 @@
                             <tr v-for="blanco in blancos">
                                 <td>@{{blanco.id_nuevo}}</td>
                                 <td>@{{blanco.descripcion}}</td>
-                                <td>@{{blanco.marca}</td>
+                                <td>@{{blanco.marca}}</td>
                                 <td>@{{blanco.unidad}}</td>
                                 <td>@{{blanco.surtido}}</td>
                                 <td>@{{blanco.total}}</td>

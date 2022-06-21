@@ -5,22 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Encargado extends Model
+class Productos extends Model
 {
     use HasFactory;
 
-    protected $table='encargados';
-    protected $primaryKey='id_encargado';
-
+    protected $table='productos';
+    protected $primaryKey='id_producto';
 
     public $incrementing=true;
     public $timestamps=false;
 
-    protected $fillable=[
-        'id_encargado',
+    protected $fillable= [
+        'id_producto',
         'nombre',
-        'cargo',
-        'id_blanco'
+        'unidad',
+        'cantidad'
     ];
-
 }

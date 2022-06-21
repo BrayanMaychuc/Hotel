@@ -38,6 +38,10 @@ Route::apiResource('encargado', 'encargadoController');
 
 Route::apiResource('sali', 'salidasController');
 
+Route::apiResource('prod','ProductosController');
+
+Route::apiResource('entradas', 'EntradaController');
+
         // FIN DE SECCION DE APIS TUUL
 
 
@@ -47,7 +51,13 @@ Route::view('diariosT', 'tablas_nuevas.inventario_diario' );
 Route::view('blancosN', 'tablas_nuevas.blanco_nuevo');
 Route::view('cubiertos','tablas_nuevas.inventario_cubiertos');
 Route::view('blancos','tablas_nuevas.inventario_blancos');
-Route::view('salida', 'salidas');
+Route::view('salidas', 'salidas');
+
+Route::view('prueba', 'pruebas.formulario');
+Route::view('salida', 'pruebas.formulario');
+Route::view('alta', 'pruebas.alta');
+Route::view('entrada', 'pruebas.entradas');
+Route::view('inven', 'pruebas.inventario');
 
 
         // Route::get('inventarioCubiertosT', function(){

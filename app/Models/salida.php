@@ -19,9 +19,11 @@ class salida extends Model
 
     protected $fillable=[
         'id',
+        'producto',
+        'cantidad',
+        'restante',
         'fecha',
         'id_encargado',
-        'cantidad'
 
     ];
 

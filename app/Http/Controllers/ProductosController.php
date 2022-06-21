@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Productos;
 use Illuminate\Http\Request;
-use App\Models\salida;
 
-
-class salidasController extends Controller
+class ProductosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class salidasController extends Controller
      */
     public function index()
     {
-        return $salida=salida::all();
+        return $producto = Productos::all();
     }
 
     /**
@@ -26,17 +25,13 @@ class salidasController extends Controller
      */
     public function store(Request $request)
     {
-        $salida= new salida();
+        $producto= new Productos();
+        $producto->id_producto=$request->get('id_producto');
+        $producto->nombre=$request->get('nombre');
+        $producto->unidad=$request->get('unidad');
+        $producto->cantidad=$request->get('cantidad');
 
-        $salida->id=$request->get('id');
-        $salida->producto=$request->get('producto');
-        $salida->cantidad=$request->get('cantidad');
-        $salida->restante=$request->get('restante');
-        $salida->fecha=$request->get('fecha');
-        $salida->id_encargado=$request->get('id_encargado');
-
-        $salida->save();
-        
+        $producto->save();
     }
 
     /**
@@ -47,7 +42,7 @@ class salidasController extends Controller
      */
     public function show($id)
     {
-        //
+        return $producto = Productos::find($id);
     }
 
     /**
@@ -59,7 +54,13 @@ class salidasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $producto= Productos::find($id);
+        $producto->id_producto=$request->get('id_producto');
+        $producto->nombre=$request->get('nombre');
+        $producto->unidad=$request->get('unidad');
+        $producto->cantidad=$request->get('cantidad');
+
+        $producto->update();
     }
 
     /**

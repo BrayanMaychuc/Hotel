@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\salida;
+use App\Models\entradas;
 
-
-class salidasController extends Controller
+class EntradaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class salidasController extends Controller
      */
     public function index()
     {
-        return $salida=salida::all();
+        return $entrada= entradas::all();
     }
 
     /**
@@ -26,17 +25,7 @@ class salidasController extends Controller
      */
     public function store(Request $request)
     {
-        $salida= new salida();
-
-        $salida->id=$request->get('id');
-        $salida->producto=$request->get('producto');
-        $salida->cantidad=$request->get('cantidad');
-        $salida->restante=$request->get('restante');
-        $salida->fecha=$request->get('fecha');
-        $salida->id_encargado=$request->get('id_encargado');
-
-        $salida->save();
-        
+        //
     }
 
     /**
